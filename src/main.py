@@ -17,11 +17,13 @@ db_config = {
 
 
 def main():
-    data = get_repos_stats('skypro-008')
+    # https://api.github.com/users/skypro-008/repos
+    # data = get_repos_stats('skypro-008')
+    data = get_repos_stats('Dred85')
     db = PostgresDB(**db_config)
     db.insert_data(data)
 
-    for item in db.get_data(5, 'forks'):
+    for item in db.get_data(30, 'forks'):
         print(item)
 
     db.export_to_json()
